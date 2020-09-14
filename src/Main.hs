@@ -1,7 +1,17 @@
 module Main where
 
 main :: IO ()
-main = putStrLn "Hello, world!!"
+parseColumn :: String -- ^ String to parse.
+            -> Int -- ^ Which row is selected.
+            -> Int -- ^ Start of the current space.
+            -> Int -- ^ Number of free "spaces" that current space has yet.
+            -> Char -- ^ Char, indicating wall
+            -> [Space]
+parseColumn []     col start steps _ = [Space (col, start) (col, (start + steps - 1))]
+parseColumn (s:st) col start steps ch
+    | (s == 'n') || (s == ch) = parseColumn st col start (steps + 1) ch
+    | otherwise = (Space (col, start) (col, (start + steps))):(parseColumn st col (start + steps + 1) 0 ch)
+
 
 -- | Will select first value of the tuple.
 first  :: (a, b, c) -> a

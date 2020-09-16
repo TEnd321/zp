@@ -15,8 +15,8 @@ data Options = Opts {
 -- | Creating a parser.
 options :: Parser Options
 options = Opts
-    <$> strOption (long "puzzleInput" <> short 'p' <> metavar "PUZZLE_IN" <> value "pIn.txt" <> help "Path to an puzzle input file.")
-    <*> strOption (long "wordsInput"  <> short 'w' <> metavar "WORDS_IN" <> value "wIn.txt" <> help "Path to an words input file.")
+    <$> strOption (long "puzzleInput" <> short 'p' <> metavar "PUZZLE_IN" <> value "pIn.txt" <> help "Path to a puzzle input file.")
+    <*> strOption (long "wordsInput"  <> short 'w' <> metavar "WORDS_IN" <> value "wIn.txt" <> help "Path to a words input file.")
     <*> flag True False (long "excludeOnes" <> short 'n')
 
 -- | Setting options for main.
